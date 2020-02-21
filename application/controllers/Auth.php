@@ -21,7 +21,7 @@ class Auth extends CI_Controller
                                             
         $this->form_validation->set_rules('password','Password', 'trim|required|min_length[4]',
                                             array(
-                                                'required'   => 'Masukkan Password..!.',
+                                                'required'   => 'Masukkan Password..!',
                                                 'min_length' => 'Minimal 4 huruf/angka/karakter',
                                                 )
                                             );
