@@ -11,8 +11,6 @@ class Home extends CI_Controller
 		$data['allProduct'] = $this->Product_model->getAllProduct();
 		$data['bannerslider'] = $this->Product_model->getBannerSlider();
 
-		
-		
 		$this->load->view('store/templates/header', $data);
         $this->load->view('store/templates/navbar',$data);
         $this->load->view('store/index',$data);

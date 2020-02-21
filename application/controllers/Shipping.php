@@ -1,10 +1,22 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class RajaOngkir extends CI_Controller
+class Shipping extends CI_Controller
 {
 	
 	// API raja ongkir
+
+	public function index()
+	{
+		
+		$data['title'] = 'SEPODO';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		
+		$this->load->view('store/templates/header', $data);
+        $this->load->view('store/templates/navbar',$data);
+        $this->load->view('store/shipping',$data);
+       	$this->load->view('store/templates/footer');       	
+	}
 
 	// Provinsi
 	public function province(){
