@@ -5,7 +5,7 @@ class Profiles extends CI_Controller
 {
 	public function index(){
 		$data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$this->load->view('store/templates/header', $data);
 		$this->load->view('store/templates/navbar',$data);
@@ -15,7 +15,7 @@ class Profiles extends CI_Controller
 
 	public function adminProfile(){
 		$data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['profile'] = $this->User_model->getUser();
 
 		$this->load->view('admin/templates/header', $data);

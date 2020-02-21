@@ -6,7 +6,7 @@ class UserAccess extends CI_Controller
 	public function index()
 	{
         $data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['allProduct'] = $this->Product_model->getAllProduct();
 
 		$this->load->view('store/templates/header', $data);
@@ -17,7 +17,7 @@ class UserAccess extends CI_Controller
 	
 	public function admin()
 	{
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$data['title'] = 'Pesanan';
 		$this->load->view('admin/templates/header', $data);
@@ -29,7 +29,7 @@ class UserAccess extends CI_Controller
 
 	public function owner()
 	{
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$data['title'] = 'Dashboard';
 		$this->load->view('admin/templates/header', $data);

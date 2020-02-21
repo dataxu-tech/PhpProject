@@ -8,7 +8,7 @@ class AdminProduct extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Produk';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['product'] = $this->db->get('product')->result_array();				
 
 		$this->form_validation->set_rules('name', 'Name', 'required', ['required' => 'nama harus di isi']);
@@ -40,7 +40,7 @@ class AdminProduct extends CI_Controller
     public function singleProduct($id)
     {
         $data['title'] = 'Detail Produk';
-        $data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['product'] = $this->db->get_where('product', ['id' => $id] )->row_array();
 
         $this->load->view('admin/templates/header', $data);

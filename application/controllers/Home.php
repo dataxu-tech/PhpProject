@@ -7,10 +7,12 @@ class Home extends CI_Controller
 	{
 		
 		$data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['allProduct'] = $this->Product_model->getAllProduct();
 		$data['bannerslider'] = $this->Product_model->getBannerSlider();
 
+		
+		
 		$this->load->view('store/templates/header', $data);
         $this->load->view('store/templates/navbar',$data);
         $this->load->view('store/index',$data);
@@ -20,7 +22,7 @@ class Home extends CI_Controller
 	public function singleProduct($id)
 	{
         $data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['allProduct'] = $this->Product_model->getAllProduct();
 		$data['singleProduct'] = $this->Product_model->getProductById($id);
 
@@ -37,7 +39,7 @@ class Home extends CI_Controller
 	public function detailOrder()
 	{
 		$data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		
 		$this->load->view('store/templates/header', $data);
         $this->load->view('store/templates/navbar',$data);
@@ -80,7 +82,7 @@ class Home extends CI_Controller
 	public function orderList()
 	{
 		$data['title'] = 'SEPODO';
-		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		
 		$this->load->view('store/templates/header', $data);
         $this->load->view('store/templates/navbar',$data);
