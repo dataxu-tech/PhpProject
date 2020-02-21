@@ -12,11 +12,10 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->form_validation->set_rules('email','Email', 'trim|required|min_length[4]|valid_email',
+        $this->form_validation->set_rules('phone','Phone', 'trim|required|min_length[4]',
                                             array(
-                                                'required'   => 'Masukkan email..!.',
-                                                'min_length' => 'Minimal 4 huruf/angka',
-                                                'valid_email'=> 'masukkan valid email'
+                                                'required'   => 'Masukkan nomer telephone..!.',
+                                                'min_length' => 'Minimal 4 huruf/angka'
                                                 )
                                             );
                                             
@@ -42,11 +41,11 @@ class Auth extends CI_Controller
     // login function
     private function _login()
     {
-        $email      = htmlspecialchars($this->input->post('email',true));
+        $phone      = htmlspecialchars($this->input->post('phone',true));
         $password   = htmlspecialchars($this->input->post('password',true));
 
         //query data from database
-        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $user = $this->db->get_where('user', ['phone' => $phone])->row_array();
         
         //when user axist
         if($user)
@@ -59,7 +58,7 @@ class Auth extends CI_Controller
                 {
                     //data for session
                     $data = [
-                        'email'     => $user['email'],
+                        'phone'     => $user['phone'],
                         'role_id'   => $user['role_id']
                     ];
 
@@ -84,12 +83,12 @@ class Auth extends CI_Controller
                 }
             }else
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">email belum diaktivasi!</div>');
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">phone belum diaktivasi!</div>');
                 redirect('auth/index');
             }
         }else
         {
-            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">silahkan aktivasi email!</div>');
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">silahkan aktivasi phone!</div>');
             redirect('auth/index');
         }
         
@@ -104,12 +103,12 @@ class Auth extends CI_Controller
                                                 'min_length' => 'Minimal 4 huruf'
                                                 )
                                             );
-        $this->form_validation->set_rules('email','Email', 'trim|required|min_length[4]|valid_email|is_unique[user.email]',
+        $this->form_validation->set_rules('phone','Email', 'trim|required|min_length[4]|is_unique[user.phone]',
                                             array(
-                                                'required'   => 'Masukkan email..!.',
+                                                'required'   => 'Masukkan phone..!.',
                                                 'min_length' => 'Minimal 4 huruf/angka',
-                                                'valid_email'=> 'masukkan valid email',
-                                                'is_unique'  => 'email sudah pernah digunakan'
+                                                'valid_email'=> 'masukkan valid phone',
+                                                'is_unique'  => 'phone sudah pernah digunakan'
                                                 )
                                             );
                                             
@@ -137,7 +136,7 @@ class Auth extends CI_Controller
             {
                 $data = [
                     'name'      => htmlspecialchars($this->input->post('name', true)),
-                    'email'     => htmlspecialchars($this->input->post('email', true)),
+                    'phone'     => htmlspecialchars($this->input->post('phone', true)),
                     'image'     => 'default.jpg',
                     'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                     'role_id'   => 3,
@@ -157,7 +156,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('phone');
         $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">Logout sukses!</div>');
