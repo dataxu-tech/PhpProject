@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2020 at 02:08 AM
+-- Generation Time: Feb 20, 2020 at 02:09 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.27
 
@@ -19,38 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sepodo`
+-- Database: `multiuser`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `qty` varchar(100) NOT NULL,
-  `price` varchar(100) NOT NULL,
-  `color` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `discount_codes`
---
-
-CREATE TABLE `discount_codes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `amount` varchar(20) NOT NULL,
-  `valid_from_date` int(10) UNSIGNED NOT NULL,
-  `valid_to_date` int(10) UNSIGNED NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1-enabled, 0-disabled'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -114,9 +84,11 @@ INSERT INTO `slider` (`id`, `name`, `image`) VALUES
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `phone` varchar(25) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `image` varchar(100) NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `role_id` int(5) NOT NULL,
   `is_active` int(1) NOT NULL,
@@ -133,11 +105,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `sex`, `birth`, `country`, `province`, `city`, `subdistrict`) VALUES
-(4, 'habib', 'habib@gmail.com', 'default.jpg', '$2y$10$TmYQSy3pJuRja7BC7gMrMemy3yL6VfkrOnM9cvmy6r0RTeeLg/bsm', 1, 1, 1561932743, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'isna', 'isna@gmail.com', 'default.jpg', '$2y$10$fYr7vK0Fs5h6GorFpNX1JOxnpV8D1WIq8RBnznmf5ArH2uC6rdXVq', 2, 1, 1562208665, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'isnatul', 'isnatul@gmail.com', 'default.jpg', '$2y$10$KCdlP8140n6IYvmLKaxqLOYFLkK13Peqs8tar0RyzzfpHWSeG7TSC', 2, 1, 1562236230, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'pelanggan1', 'pelanggan1@gmail.com', 'default.jpg', '$2y$10$B5KF91v8mmFKZoNYqhqxnOmWH7YHyRYjw6cbo6EEgkrix49AijF3i', 3, 1, 1564787912, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `name`, `phone`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`, `sex`, `birth`, `country`, `province`, `city`, `subdistrict`) VALUES
+(4, NULL, 'habib', NULL, 'habib@gmail.com', 'default.jpg', '$2y$10$TmYQSy3pJuRja7BC7gMrMemy3yL6VfkrOnM9cvmy6r0RTeeLg/bsm', 1, 1, 1561932743, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, NULL, 'isna', NULL, 'isna@gmail.com', 'default.jpg', '$2y$10$fYr7vK0Fs5h6GorFpNX1JOxnpV8D1WIq8RBnznmf5ArH2uC6rdXVq', 2, 1, 1562208665, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'pelanggan1', 'pelanggan', '085733666566', 'pelanggan1@gmail.com', 'default.jpg', '$2y$10$xm60yNlrmLEsicbwhEAxGery4b.HS1y4mJcMFwzaa.IBw8ohRbszS', 3, 0, 1581372610, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -239,18 +210,6 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `discount_codes`
---
-ALTER TABLE `discount_codes`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -297,18 +256,6 @@ ALTER TABLE `user_sub_menu`
 --
 
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `discount_codes`
---
-ALTER TABLE `discount_codes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
@@ -324,7 +271,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
