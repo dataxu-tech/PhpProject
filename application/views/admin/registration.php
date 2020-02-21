@@ -16,9 +16,9 @@
               </div>
               <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
               <div class="form-group">
-                <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email" value="<?= set_value('email'); ?>">
+                <input type="text" class="form-control form-control-user" id="phone" name="Phone" placeholder="Nomer Telefon" value="<?= set_value('phone'); ?>">
               </div>
-              <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
+              <?= form_error('phone', '<small class="text-danger">', '</small>'); ?>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
