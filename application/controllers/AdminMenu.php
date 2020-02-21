@@ -7,7 +7,7 @@ class AdminMenu extends CI_Controller
 	{
 		$data['title'] = 'Menu Utama';
 
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		$data ['menu'] = $this->db->get('user_menu')->result_array();
 
 		$this->form_validation->set_rules('menu', 'Menu', 'required', ['required' => 'Nama menu harus di isi']);
@@ -32,7 +32,7 @@ class AdminMenu extends CI_Controller
 	{
 		$data['title'] = 'Menu Utama';
 
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		$data ['menu'] = $this->db->get_where('user_menu', ['id' => $id])->row_array();
 		
 

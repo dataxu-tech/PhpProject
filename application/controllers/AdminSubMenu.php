@@ -8,7 +8,7 @@ class AdminSubMenu extends CI_Controller
 	{
 		$data['title'] = 'Sub Menu';
 
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		$data ['menu'] = $this->db->get('user_menu')->result_array();
 
 		$data['subMenu'] = $this->Sub_Menu_model->getSubMenu();
@@ -42,7 +42,7 @@ class AdminSubMenu extends CI_Controller
 	{
 		$data['title'] = 'Sub Menu';
 
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		
 		$data['Menu'] = $this->Sub_Menu_model->getSubMenu();
 		$data['subMenu'] = $this->Sub_Menu_model->getSubMenuById($id);

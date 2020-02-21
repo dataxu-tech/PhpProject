@@ -6,7 +6,7 @@ class AdminSetUser extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'User Role';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		$data['userAccess'] = $this->db->get('user')->result_array();
 		$data['role'] = $this->db->get('user_role', 'role')->row_array();
 
@@ -22,13 +22,13 @@ class AdminSetUser extends CI_Controller
 	public function update($id)
 	{
 		$data['title'] = 'User Role';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['phone' => $this->session->userdata('phone')])->row_array();
 		
 		$data['edit'] = $this->db->get_where('user',['id' => $id])->result_array();
 
 		//validasi data user input
 		$this->form_validation->set_rules('name', 'Name', 'required', ['required' => 'menu harus di isi']);
-		$this->form_validation->set_rules('email', 'Email', 'required', ['required' => 'judul harus di isi']);
+		$this->form_validation->set_rules('phone', 'Phone', 'required', ['required' => 'judul harus di isi']);
 		$this->form_validation->set_rules('role_id', 'Role', 'required', ['required' => 'url harus di isi']);
 		
 		//jika validasi salah
@@ -43,7 +43,7 @@ class AdminSetUser extends CI_Controller
 		$data = [
         			'id' 		=> $this->input->post('id',true),
         			'name'		=> $this->input->post('name',true),
-        			'email'		=> $this->input->post('email',true),
+        			'phone'		=> $this->input->post('phone',true),
         			'role_id'	=> $this->input->post('role_id', true),
         			'is_active'	=> $this->input->post('is_active')
         	];
