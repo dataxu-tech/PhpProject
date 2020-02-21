@@ -1,0 +1,41 @@
+body {
+  padding-top: 56px;
+
+}
+
+
+
+/*custome for navbar store*/
+
+#nav-store {
+	background-color: #05B7C2;
+}
+
+/*end custom for navbar store*/
+
+
+
+/*single-product*/
+#single-image {
+	width: 550px;
+}
+/*end single product*/
+
+
+
+/*navbar bottom for single product*/
+#item-bottom {
+	color: #273746; 
+	font-size: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 60px;
+	padding-right: 60px;
+	
+}
+/*end navbar bottom */
+
+td input.order-qty-input {
+	width: 50px;
+}
+
