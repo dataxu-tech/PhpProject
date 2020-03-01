@@ -51,7 +51,7 @@
     <!-- owl carousel -->
     <script src="<?= base_url('assets/') ?>store/carousel/js/owl.carousel.js"></script>
     <!-- costom script owl-carousel -->
-    <script>
+    <!-- <script>
 
         $('.owl-carousel').owlCarousel({
           autoplay: true,
@@ -72,7 +72,7 @@
           }
         });
       
-    </script>
+    </script> -->
 </body>
 
 </html>

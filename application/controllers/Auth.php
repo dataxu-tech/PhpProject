@@ -98,10 +98,11 @@ class Auth extends CI_Controller
 
     public function registration()
     {
-        $this->form_validation->set_rules('name','Name', 'trim|required|min_length[4]',
+        $this->form_validation->set_rules('username','Username', 'trim|required|min_length[2]|is_unique[user.username]',
                                             array(
                                                 'required'   => 'Masukkan nama..!.',
-                                                'min_length' => 'Minimal 4 huruf'
+                                                'min_length' => 'Username terlalu pendek',
+                                                'is_unique'  => 'username sudah pernah digunakan'
                                                 )
                                             );
         $this->form_validation->set_rules('email','Email', 'trim|required|min_length[4]|valid_email|is_unique[user.email]',
@@ -136,7 +137,7 @@ class Auth extends CI_Controller
             }else
             {
                 $data = [
-                    'name'      => htmlspecialchars($this->input->post('name', true)),
+                    'username'      => htmlspecialchars($this->input->post('username', true)),
                     'email'     => htmlspecialchars($this->input->post('email', true)),
                     'image'     => 'default.jpg',
                     'password'  => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),

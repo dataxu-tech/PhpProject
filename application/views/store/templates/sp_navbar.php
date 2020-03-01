@@ -1,7 +1,7 @@
 <div class="d-lg-none">
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-bottom col-sm-11 nav-bot" >
 	    
-      	<a href="#" class="btn btn-outline-warning rounded-pill ml-5" >
+      	<a href="#" class="btn btn-outline-warning rounded-pill" >
       		<i class="far fa-comments rounded-pill" id="item-bottom"></i>
       	</a>
 		
